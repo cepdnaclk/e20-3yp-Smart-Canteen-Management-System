@@ -1,10 +1,11 @@
 ___
-# DELETE THIS INSTRUCTIONS AND ADD AN INTRODUCTION ABOUT YOUR PROJECT
+
+# eYY-3yp-Smart Canteen Management System
 ___
 
-# eYY-3yp-project-template
+Smart Canteen management system is a system designed to increase the efficiency of the currently existing cafeterias.
 
-This is a sample repository you can use for your Embedded Systems project. Once you followed these instructions, remove the text and add a brief introduction to here.
+Key features:
 
 ### Enable GitHub Pages
 
