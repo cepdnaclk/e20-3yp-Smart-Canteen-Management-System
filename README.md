@@ -1,6 +1,6 @@
 ___
 
-# eYY-3yp-Smart Canteen Management System
+# e20-3yp-Smart Canteen Management System
 ___
 
 Smart Canteen management system is a system designed to increase the efficiency of the currently existing cafeterias.
