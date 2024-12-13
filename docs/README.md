@@ -18,7 +18,7 @@ title: Smart Canteen Management System
 -  E20259, Munasinghe S.L.,e20259@eng.pdn.ac.lk <br>
 -  E20376, Shyamantha R.M.M.,e20376@eng.pdn.ac.lk <br>
 
-<!-- Image (photo/drawing of the final hardware) should be here -->
+<!-- Image (photo/drawing of the final hardware) should be here .-->
 
 <!-- This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/) -->
 
