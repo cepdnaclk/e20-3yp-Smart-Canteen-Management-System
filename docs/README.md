@@ -3,20 +3,20 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and project title
-repository-name: eYY-3yp-project-template
-title: Project Template
+repository-name: e20-3yp-Smart-Canteen-Management-System
+title: Smart Canteen Management System
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
-
+# Smart Canteen Management System
 ---
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E20084, Dissanayake P.D., [email](e20084@eng.pdn.ac.lk.com)
+-  E20121, Gunasinha H.P.M.S., [email](e20121@eng.pdn.ac.lk.com)
+-  E20259, Munasinghe S.L., [email](e20259@eng.pdn.ac.lk.com)
+-  E20376, Shyamantha R.M.M., [email](e20376@eng.pdn.ac.lk.com)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
@@ -35,7 +35,7 @@ title: Project Template
 
 ## Introduction
 
-Description of the real world problem and solution, impact
+Smart canteen management system addresses the modern challenge of inefficiency of the canteens and how to increase the efficiency and reduce the long queues and congestion.Cashless canteens is the ideology in the project. Smart pay, cashless interactions, digital menu system, app based canteen facility observation and online services through the web applications is provided in the scope of the project
 
 
 ## Solution Architecture
@@ -64,7 +64,7 @@ What was achieved, future developments, commercialization plans
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System){:target="_blank"}
 - [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
