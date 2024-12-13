@@ -13,10 +13,10 @@ title: Smart Canteen Management System
 ---
 
 ## Team
--  E20084, Dissanayake P.D., [email](e20084@eng.pdn.ac.lk.com)
--  E20121, Gunasinha H.P.M.S., [email](e20121@eng.pdn.ac.lk.com)
--  E20259, Munasinghe S.L., [email](e20259@eng.pdn.ac.lk.com)
--  E20376, Shyamantha R.M.M., [email](e20376@eng.pdn.ac.lk.com)
+-  E20084, Dissanayake P.D.,e20084@eng.pdn.ac.lk <br>
+-  E20121, Gunasinha H.P.M.S.,e20121@eng.pdn.ac.lk <br>
+-  E20259, Munasinghe S.L.,e20259@eng.pdn.ac.lk <br>
+-  E20376, Shyamantha R.M.M.,e20376@eng.pdn.ac.lk <br>
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
