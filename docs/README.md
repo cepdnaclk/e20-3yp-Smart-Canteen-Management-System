@@ -64,8 +64,8 @@ What was achieved, future developments, commercialization plans
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/e20-3yp-Smart-Canteen-Management-System){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System:target="_blank")
+- [Project Page](https://cepdnaclk.github.io/e20-3yp-Smart-Canteen-Management-System:target="_blank")
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
