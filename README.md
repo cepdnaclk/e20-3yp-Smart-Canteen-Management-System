@@ -19,35 +19,40 @@ These projects will be automatically added into [https://projects.ce.pdn.ac.lk](
 
 ```
 {
-  "title": "This is the title of the project",
-  "team": [
-    {
-      "name": "Team Member Name 1",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
-    },
-    {
-      "name": "Team Member Name 2",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
-    },
-    {
-      "name": "Team Member Name 3",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
-    }
-  ],
-  "supervisors": [
-    {
-      "name": "Dr. Supervisor 1",
-      "email": "email@eng.pdn.ac.lk"
-    },
-    {
-      "name": "Supervisor 2",
-      "email": "email@eng.pdn.ac.lk"
-    }
-  ],
-  "tags": ["Web", "Embedded Systems"]
+    "title": "This is the title of the project",
+    "team": [
+        {
+            "name": "Dissanayake P.D.",
+            "email": "e20084@eng.pdn.ac.lk",
+            "eNumber": "E/20/084"
+        },
+        {
+            "name": "Gunasinha H.P.M.S.",
+            "email": "e20121@eng.pdn.ac.lk",
+            "eNumber": "E/20/121"
+        },
+        {
+            "name": "Munasinghe S.L.",
+            "email": "e20259@eng.pdn.ac.lk",
+            "eNumber": "E/20/259"
+        },
+        {
+            "name": "Shyamantha R.M.M.",
+            "email": "e20376@eng.pdn.ac.lk",
+            "eNumber": "E/20/376"
+        }
+    ],
+    "supervisors": [
+        {
+            "name": "Dr. Isuru Nawinne",
+            "email": "isurunawinne@eng.pdn.ac.lk"
+        }
+    ],
+    "tags": [
+        "Web",
+        "Embedded Systems",
+        "Network Security"
+    ]
 }
 ```
 
