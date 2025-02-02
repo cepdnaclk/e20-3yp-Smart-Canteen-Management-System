@@ -84,7 +84,7 @@ The Smart Canteen Management System is a robust solution designed to modernize a
   HTML, CSS, JavaScript, PHP – These technologies are used for building a responsive and interactive user interface for customers and cafeteria management.
 
 - **Embedded Systems:**  
-  Arduino, IoT – These systems are used to control inventory and manage physical devices, such as stock counters, smart dispensers, and sensor-based inventory tracking.
+  Rasberry PI, IoT – These systems are used to control inventory and manage physical devices, such as stock counters, smart dispensers, and sensor-based inventory tracking.
 
 - **Network Security:**  
   SSL/TLS encryption for secure communication – Ensures that data exchanged between the customer and the cafeteria system remains encrypted and safe from potential security breaches.
