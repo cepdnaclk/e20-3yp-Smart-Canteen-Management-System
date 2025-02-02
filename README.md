@@ -93,4 +93,10 @@ The Smart Canteen Management System is a robust solution designed to modernize a
   MySQL/PostgreSQL – A relational database management system (RDBMS) to store user data, transaction history, inventory data, and more.
 
 ---
+## Links
+
+- [Project Repository](https://github.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/)
+- [Project Page](https://cepdnaclk.github.io/e20-3yp-Smart-Canteen-Management-System/)
+- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
+- [University of Peradeniya](https://eng.pdn.ac.lk/)
 
