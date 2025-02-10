@@ -1,0 +1,19 @@
+.navbar{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+}
+
+.navbar .logo{
+    width: 150px;
+}
+
+.navbar-menu{
+    display: flex;
+    list-style:none;
+    gap:20px;
+    color: rgb(2, 37, 37);
+    font-size: 18px;
+
+}
