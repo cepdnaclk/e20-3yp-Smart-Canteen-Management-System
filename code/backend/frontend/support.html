@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Support{% endblock %}
+
+{% block content %}
+<h1>Support</h1>
+<p>If you encounter any issues or have questions, please contact us:</p>
+<ul>
+    <li>Email: support@smartcanteen.com</li>
+    <li>Phone: +123 456 7890</li>
+</ul>
+<form method="POST" action="{% url 'support' %}">
+    {% csrf_token %}
+    <label for="issue">Describe Your Issue:</label><br>
+    <textarea id="issue" name="issue" rows="5" required></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
