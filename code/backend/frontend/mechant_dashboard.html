@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Merchant Dashboard{% endblock %}
+
+{% block content %}
+<h1>Merchant Dashboard</h1>
+<div class="dashboard">
+    <div class="menu">
+        <h2>Menu</h2>
+        <button onclick="location.href='{% url 'menu' %}'">Update Menu</button>
+    </div>
+    <div class="discounts">
+        <h2>Discounts</h2>
+        <button onclick="location.href='{% url 'discounts' %}'">Add Discounts</button>
+    </div>
+    <div class="sales-analytics">
+        <h2>Sales Analytics</h2>
+        <p>Total Sales Today: $200.00</p>
+    </div>
+</div>
+{% endblock %}

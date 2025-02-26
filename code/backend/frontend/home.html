@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Smart Canteen{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Smart Canteen Management System</h1>
+    <p>Streamline your cafeteria experience with digital ordering, cashless payments, and real-time tracking.</p>
+    <a href="{% url 'login' %}" class="btn">Get Started</a>
+</section>
+
+<section class="features">
+    <h2>Key Features</h2>
+    <ul>
+        <li>Cashless Payments</li>
+        <li>Real-Time Inventory Tracking</li>
+        <li>Customizable Orders</li>
+        <li>Sales Analytics</li>
+    </ul>
+</section>
+{% endblock %}

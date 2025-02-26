@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.dashboard div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 30%;
+}
+
+.btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.menu-items table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-items th, .menu-items td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-items th {
+    background-color: #f4f4f4;
+}
