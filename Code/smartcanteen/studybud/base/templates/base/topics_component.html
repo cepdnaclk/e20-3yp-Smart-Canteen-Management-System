@@ -1,6 +1,6 @@
 <div class="topics">
     <div class="topics__header">
-        <h2>Browse Topics</h2>
+        <h2>Browse Category</h2>
     </div>
     <ul class="topics__list">
         <li>
@@ -8,7 +8,9 @@
         </li>
         {% for topic in topics %}
         <li>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}<span>{{topic.room_set.all.count}}</span></a>
+            <a href="{% url 'home' %}?q={{topic.name}}">Food Category
+
+            </span></a>
         </li>
         {% endfor %}
 
