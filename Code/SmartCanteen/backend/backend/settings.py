@@ -59,10 +59,10 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            BASE_DIR / '/Code/SmartCanteen/frontend/admin',
-            BASE_DIR / '/Code/SmartCanteen/frontend/customer',
-            BASE_DIR / '/Code/SmartCanteen/frontend/home',
-            BASE_DIR / '/Code/SmartCanteen/frontend/merchant',
+            BASE_DIR / 'frontend/admin/',
+            BASE_DIR / 'frontend/customer/',
+            BASE_DIR / 'frontend/home/',
+            BASE_DIR / 'frontend/merchant/',
             ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -121,10 +121,18 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+# settings.py
 
-STATIC_URL = "static/"
+# Define the URL where static files will be served from
+STATIC_URL = '/static/'
+
+# If you're storing static files outside of your apps, you can specify their locations here
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # If you have a global 'static' directory at the base of your project
+]
+
+# Directory where static files will be collected when you run collectstatic (for deployment)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
