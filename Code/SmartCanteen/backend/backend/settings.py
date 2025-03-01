@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "base.apps.BaseConfig",
+    "customers.apps.CustomersConfig",
+    "merchants.apps.MerchantsConfig",
+    "superusers.apps.SuperusersConfig",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +58,12 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / '/Code/SmartCanteen/frontend/admin',
+            BASE_DIR / '/Code/SmartCanteen/frontend/customer',
+            BASE_DIR / '/Code/SmartCanteen/frontend/home',
+            BASE_DIR / '/Code/SmartCanteen/frontend/merchant',
+            ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
