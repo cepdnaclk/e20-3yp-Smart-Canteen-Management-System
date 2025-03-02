@@ -51,12 +51,14 @@ x = None
 def on_message(client, userdata, message):
     try:
         fingerprint_users = [
-            {"id": 10, "name": "maleesha"},
-            {"id": 1, "name": "Pathum"},
-            {"id": 8, "name": "Manuja"},
+            {"id": 26, "name": "maleesha"},
+            {"id": 21, "name": "Pathum"},
+            {"id": 23, "name": "Manuja"},
             {"id": 22, "name": "Sandun"},
             {"id": 18, "name": "Sn"},
             {"id": 25, "name": "Sn1"},
+            {"id": 220750260546, "name": "Ali"},
+            {"id": 14344990078, "name": "Zara"},
         ]
         user_id = message.payload.decode("utf-8")
         # Get the user ID from the message
