@@ -57,3 +57,8 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'home/login.html', {'form': form})
 
+# home/views.py
+from django.shortcuts import render
+
+def fingerprint(request):
+    return render(request, 'home/fingerprint.html')
