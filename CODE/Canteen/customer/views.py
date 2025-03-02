@@ -1,4 +1,8 @@
+# canteen/views.py
 from django.shortcuts import render
 
-def customer_home(request):
-    return render(request,'customer/home.html')
+# Existing views ...
+
+# Customer Dashboard view
+def home(request):
+    return render(request, 'customer/home.html')

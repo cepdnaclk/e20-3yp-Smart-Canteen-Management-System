@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.urls import path , include
+# canteen/merchant_urls.py
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("",views.merchant_home),
+    path('', views.merchant_dashboard, name='merchant_dashboard'),
+    # Add other merchant-specific pages here
 ]

@@ -1,0 +1,18 @@
+<!-- canteen/templates/canteen/navbar.html -->
+<header class="header">
+    <div class="container header-container">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <span>Smart Canteen</span>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+                <li><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
+                <li><a href="{% url 'live_view' %}" class="nav-link">Live View</a></li>
+                <li><a href="{% url 'features' %}" class="nav-link">Features</a></li>
+                <li><a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
