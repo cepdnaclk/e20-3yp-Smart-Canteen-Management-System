@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 
 # Callback when message is received from MQTT broker
 def on_message(client, userdata, message):
+    
     try:
         user_id = message.payload.decode("utf-8")  # Get the user ID from the message
         print(f"Received message: {user_id}")
