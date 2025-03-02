@@ -1,11 +1,51 @@
+<!-- canteen/templates/canteen/customer_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer</title>
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    Customer
+    {% include 'canteen/navbar.html' %}
+
+    <section class="container">
+        <h2 class="section-title">Welcome, {{ request.user.username }}</h2>
+        <div class="dashboard">
+            <h3>Your Information</h3>
+            <div class="info-card">
+                <p><strong>Account Balance:</strong> Rs 500.00</p>
+                <p><strong>Pending Orders:</strong> 2</p>
+            </div>
+            
+            <h3>Your Recent Transactions</h3>
+            <div class="transaction-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01 Mar 2025</td>
+                            <td>Rs 100.00</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>28 Feb 2025</td>
+                            <td>Rs 200.00</td>
+                            <td>Completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    {% include 'home/footer.html' %}
 </body>
 </html>

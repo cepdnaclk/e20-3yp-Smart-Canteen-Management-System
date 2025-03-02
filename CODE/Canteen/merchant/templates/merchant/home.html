@@ -1,11 +1,51 @@
+<!-- canteen/templates/canteen/merchant_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Merchant Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    Merchant
+    {% include 'canteen/navbar.html' %}
+
+    <section class="container">
+        <h2 class="section-title">Welcome, {{ request.user.username }} (Merchant)</h2>
+        <div class="dashboard">
+            <h3>Today's Sales</h3>
+            <div class="info-card">
+                <p><strong>Total Sales Today:</strong> Rs 3,000.00</p>
+                <p><strong>Total Transactions:</strong> 150</p>
+            </div>
+            
+            <h3>Manage Orders</h3>
+            <div class="order-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#101</td>
+                            <td>John Doe</td>
+                            <td><span class="status-tag low">Processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>#102</td>
+                            <td>Jane Smith</td>
+                            <td><span class="status-tag medium">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    {% include 'canteen/footer.html' %}
 </body>
 </html>

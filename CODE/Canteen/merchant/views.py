@@ -1,4 +1,8 @@
+# canteen/views.py
 from django.shortcuts import render
 
-def merchant_home(request):
-    return render(request,"merchant/home.html")
+# Existing views ...
+
+# Merchant Dashboard view
+def merchant_dashboard(request):
+    return render(request, 'merchant/home.html')
