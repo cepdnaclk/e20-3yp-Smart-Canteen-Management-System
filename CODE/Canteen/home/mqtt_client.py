@@ -39,18 +39,42 @@
 
 import threading
 import paho.mqtt.client as mqtt
+from django.http import HttpResponse
+from django.shortcuts import redirect
 
-# Callback when message is received from MQTT broker
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+
+
+x = None
 def on_message(client, userdata, message):
     try:
-        user_id = message.payload.decode("utf-8")  # Get the user ID from the message
-        print(f"Received message: {user_id}")
-        
-        # Use the user_id to fetch data or send it to the frontend
-        # Example code to send to frontend or save in DB
+        fingerprint_users = [
+            {"id": 20, "name": "maleesha"},
+            {"id": 21, "name": "Pathum"},
+            {"id": 23, "name": "Manuja"},
+            {"id": 22, "name": "Sandun"},
+        ]
+        user_id = message.payload.decode("utf-8")
+        # Get the user ID from the message
+        for user in fingerprint_users:
+            if user['id'] == int(user_id):
+                print("Success")
+                print(f"Received message: {user['name']}")
 
+                # Send the user name to the frontend via WebSocket
+                channel_layer = get_channel_layer()
+                async_to_sync(channel_layer.group_send)(
+                    "fingerprint_group",  # Group name
+                    {
+                        'type': 'fingerprint_data',  # Message type
+                        'name': user['name']  # The user's name
+                    }
+                )
+                break
     except Exception as e:
         print(f"Error processing the message: {e}")
+
 
 # MQTT setup function that runs in a separate thread
 def setup_mqtt():

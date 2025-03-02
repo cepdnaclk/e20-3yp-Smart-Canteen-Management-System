@@ -1,32 +1,32 @@
-# consumers.py
-import json
 from channels.generic.websocket import AsyncWebsocketConsumer
+import json
 
 class FingerprintConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        # Perform the WebSocket connection
-        self.room_group_name = 'fingerprint_data'
+        # Join the fingerprint group
+        self.group_name = "fingerprint_group"
         await self.channel_layer.group_add(
-            self.room_group_name,
+            self.group_name,
             self.channel_name
         )
         await self.accept()
 
     async def disconnect(self, close_code):
-        # Leave the group
+        # Leave the fingerprint group
         await self.channel_layer.group_discard(
-            self.room_group_name,
+            self.group_name,
             self.channel_name
         )
 
+    # Receive message from WebSocket
     async def receive(self, text_data):
-        # Logic to handle messages from frontend if needed
         pass
 
-    # Method to send MQTT data to the WebSocket
-    async def send_fingerprint_data(self, user_id):
+    # Receive message from MQTT via WebSocket
+    async def fingerprint_data(self, event):
+        name = event['name']
+        
+        # Send data to WebSocket
         await self.send(text_data=json.dumps({
-            'user_id': user_id,
-            'name': 'Name Placeholder',
-            'email': 'email@domain.com',
+            'name': name,
         }))

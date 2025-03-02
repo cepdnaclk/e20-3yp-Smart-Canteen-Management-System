@@ -492,13 +492,12 @@
                 <i class="fas fa-utensils"></i>
                 <span>Smart Canteen</span>
             </div>
-            <nav>   
-
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
                     <li><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
                     <li><a href="{% url 'live_view' %}" class="nav-link">Live View</a></li>
-                    <li><a href="{% url 'order' %}" class="nav-link">My Orders</a></li>
+                    <li><a href="{% url 'my_orders' %}" class="nav-link">My Orders</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -510,7 +509,7 @@
                     <span class="cart-count">0</span>
                 </div>
                 <button class="btn btn-primary" id="loginBtn"><a href="/logout">Logout</a></button>
-                {% endif %}               
+                {% else %}               
             </div>
         </div>
     </header>
