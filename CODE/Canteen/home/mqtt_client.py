@@ -38,6 +38,7 @@
 #     client.loop_forever()
 
 import threading
+import webbrowser
 import paho.mqtt.client as mqtt
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -50,10 +51,12 @@ x = None
 def on_message(client, userdata, message):
     try:
         fingerprint_users = [
-            {"id": 20, "name": "maleesha"},
-            {"id": 21, "name": "Pathum"},
-            {"id": 23, "name": "Manuja"},
+            {"id": 10, "name": "maleesha"},
+            {"id": 1, "name": "Pathum"},
+            {"id": 8, "name": "Manuja"},
             {"id": 22, "name": "Sandun"},
+            {"id": 18, "name": "Sn"},
+            {"id": 25, "name": "Sn1"},
         ]
         user_id = message.payload.decode("utf-8")
         # Get the user ID from the message
@@ -61,6 +64,8 @@ def on_message(client, userdata, message):
             if user['id'] == int(user_id):
                 print("Success")
                 print(f"Received message: {user['name']}")
+                webbrowser.open_new_tab(f"http://127.0.0.1:8000/fingerprintTest/{user['name']}")
+                
 
                 # Send the user name to the frontend via WebSocket
                 channel_layer = get_channel_layer()

@@ -64,8 +64,6 @@ from django.shortcuts import render
 def fingerprint(request):
     return render(request, 'home/fingerprint.html')
 
-def fingerprintTest(request,name):
-    return HttpResponse(f"User : {name}")
 
 # views.py
 from django.shortcuts import render
@@ -90,3 +88,7 @@ def logout_view(request):
     
     # Redirect to the login page
     return redirect('login')  # Replace 'login' with your actual login URL name
+
+
+def fingerprintTest(request,name):
+    return HttpResponse(f"<h1>User : {name}<h1>")
