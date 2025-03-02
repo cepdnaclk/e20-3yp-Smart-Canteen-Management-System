@@ -1,0 +1,28 @@
+<!-- fingerprint.html -->
+<div id="user-info">
+    <!-- The user data will be dynamically updated here -->
+</div>
+
+<script>
+    const socket = new WebSocket('ws://127.0.0.1:8000/fingerprint/');
+
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        console.log("Received data:", data);
+
+        if (data.error) {
+            alert("Error: " + data.error);
+        } else {
+            const userInfo = `
+                <p>User ID: ${data.user_id}</p>
+                <p>Name: ${data.name}</p>
+                <p>Email: ${data.email}</p>
+            `;
+            document.getElementById("user-info").innerHTML = userInfo;  // Update user data
+        }
+    };
+
+    socket.onclose = function(e) {
+        console.error('WebSocket closed unexpectedly');
+    };
+</script>
