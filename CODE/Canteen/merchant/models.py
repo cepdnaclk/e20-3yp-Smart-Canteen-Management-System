@@ -1,5 +1,7 @@
 from django.db import models
 from home.models import User
+
+#Merchant,Menu,Order,Transaction
 class Merchant(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)

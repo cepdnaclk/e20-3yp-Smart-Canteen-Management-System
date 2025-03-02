@@ -492,25 +492,24 @@
                 <i class="fas fa-utensils"></i>
                 <span>Smart Canteen</span>
             </div>
-            <nav>   
-
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
                     <li><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
-                    <li><a href="{% url 'live_view' %}" class="nav-link">Live View</a></li>
-                    <li><a href="{% url 'order' %}" class="nav-link">My Orders</a></li>
+                    <li><a href="{% url 'inventory' %}" class="nav-link">Inventory</a></li>
+                    <li><a href="{% url 'my_orders' %}" class="nav-link">Orders</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
                 {% if request.user.is_authenticated %}
-                <div class="user-balance" id="userBalance">Rs 500.00</div>
+                <div class="user-balance" id="userBalance">Rs 455,500.00</div>
                 <button class="btn btn-outline" id="topupBtn">Top Up</button>
                 <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </div>
                 <button class="btn btn-primary" id="loginBtn"><a href="/logout">Logout</a></button>
-                {% endif %}               
+                {% else %}               
             </div>
         </div>
     </header>
@@ -524,14 +523,12 @@
                     <div class="user-avatar">
                         <span>PD</span>
                     </div>
-                    <h3>Pathum Dilhara</h3>
-                    <p>Student ID: 1234</p>
+                    <h3>Maleesha Shehan</h3>
+                    <p>Student ID: 4321</p>
                 </div>
                 <div class="sidebar-menu">
                     <a href="#" class="sidebar-link active">Dashboard</a>
                     <a href="#" class="sidebar-link">Order History</a>
-                    <a href="#" class="sidebar-link">Favorite Items</a>
-                    <a href="#" class="sidebar-link">Payment Methods</a>
                     <a href="#" class="sidebar-link">Notifications</a>
                     <a href="#" class="sidebar-link">Profile Settings</a>
                 </div>
@@ -545,14 +542,14 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>Current Balance</h3>
-                        <div class="value">Rs 500.00</div>
+                        <div class="value">Rs 455,500.00</div>
                         <div class="trend up">
                             <span>↑ Rs 200 from last topup</span>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <h3>Monthly Spent</h3>
-                        <div class="value">Rs 1,245.00</div>
+                        <h3>Monthly Income</h3>
+                        <div class="value">Rs 121,245.00</div>
                         <div class="trend down">
                             <span>↓ 15% from last month</span>
                         </div>
@@ -625,7 +622,7 @@
 
                 <!-- Favorite Items -->
                 <div class="favorites-section">
-                    <h3>Your Favorite Items</h3>
+                    <h3>Popular Products</h3>
                     <div class="favorites-grid">
                         <div class="favorite-item">
                             <div class="favorite-image">Veg Thali</div>

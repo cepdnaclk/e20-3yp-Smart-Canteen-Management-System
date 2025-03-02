@@ -1,5 +1,5 @@
 # home/models.py
-
+#User,Fingerprint,RFID
 from django.db import models
 
 class User(models.Model):

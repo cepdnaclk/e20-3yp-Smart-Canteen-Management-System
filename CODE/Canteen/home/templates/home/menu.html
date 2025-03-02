@@ -13,6 +13,9 @@
             gap: 10px;
             margin-bottom: 20px;
             flex-wrap: wrap;
+            background-color: hsl(162, 91%, 45%);
+            
+            
         }
 
         .filter-btn {
@@ -20,13 +23,13 @@
             border: none;
             border-radius: 20px;
             cursor: pointer;
-            background-color: #e0e0e0;
+            background-color: hsl(100°, 83%, 23%);
             transition: all 0.3s ease;
         }
 
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--primary-color);
-            color: white;
+            color: rgb(4, 102, 135);
         }
 
         .menu-grid {
@@ -85,7 +88,7 @@
     </style>
 </head>
 <body>
-    {% include 'home/navbar.html' %}
+    {% include 'home/pages/navbar.html' %}
 
     <section id="menu" class="container">
         <h2 class="section-title">Today's Menu</h2>
