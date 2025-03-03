@@ -85,13 +85,13 @@ The budget for the project includes all hardware, software, and operational cost
 | Item                                | Quantity | Unit Cost (LKR) | Total Cost (LKR) |
 | ----------------------------------- |:--------:|:---------------:|-----------------:|
 | **Raspberry Pi 3B+**                | 1        | 11,800.00       | 11,800.00        |
-| **Touch Display**                   | 1        | 13,000.00       | 13,000.00        |
-| **Raspberry Pi 3B Camera Module**   | 1        | 1,400.00        | 1,400.00         |
-| **Fingerprint Scanner**             | 1        | 3,480.00        | 3,480.00         |
+| **Touch Display**                   | 1        | 8,000.00       | 8,000.00        |
+| **Raspberry Pi 3B Camera Module**   | 1        | 2,800.00        | 2,800.00         |
+| **Fingerprint Scanner**             | 1        | 4,900.00        | 4,900.00         |
 | **RFID Scanner and Reader**         | 1        | 2,900.00        | 2,900.00         |
-| **Other Expenses (NumberPad, Case)**| 1        | 6,000.00        | 6,000.00         |
+| **Other Expenses (NumberPad, Case)**| 1        | 8,000.00        | 8,000.00         |
 
-**Total Budget:** 38,580.00 LKR
+**Total Budget:** 37,400.00 LKR
 
 This budget allocation covers all necessary components for hardware implementation, including the Raspberry Pi unit, display, camera module, fingerprint scanner, RFID scanner, and miscellaneous expenses for accessories like the number pad and case.
 
