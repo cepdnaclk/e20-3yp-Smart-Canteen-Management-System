@@ -1,13 +1,16 @@
-package com.SmartCanteen.Backend.Services.Impl;
+package com.SmartCanteen.Backend.Services;
 
 import com.SmartCanteen.Backend.DTOs.CreditTopUpRequestDTO;
-import com.SmartCanteen.Backend.Entities.*;
+import com.SmartCanteen.Backend.Entities.CreditTopUpRequest;
+import com.SmartCanteen.Backend.Entities.Customer;
+import com.SmartCanteen.Backend.Entities.Merchant;
+import com.SmartCanteen.Backend.Entities.RequestStatus;
 import com.SmartCanteen.Backend.Repositories.CreditTopUpRequestRepository;
 import com.SmartCanteen.Backend.Repositories.CustomerRepository;
 import com.SmartCanteen.Backend.Repositories.MerchantRepository;
-import com.SmartCanteen.Backend.Services.CreditTopUpRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CreditTopUpRequestServiceImpl implements CreditTopUpRequestService {
 
     private final CreditTopUpRequestRepository requestRepository;
@@ -37,9 +41,9 @@ public class CreditTopUpRequestServiceImpl implements CreditTopUpRequestService 
         request.setStatus(RequestStatus.PENDING);
         request.setRequestTime(LocalDateTime.now());
 
-        requestRepository.save(request);
+        CreditTopUpRequest saved = requestRepository.save(request);
 
-        return mapToDto(request);
+        return mapToDto(saved);
     }
 
     @Override
@@ -73,16 +77,16 @@ public class CreditTopUpRequestServiceImpl implements CreditTopUpRequestService 
         }
 
         request.setResponseTime(LocalDateTime.now());
-        requestRepository.save(request);
+        CreditTopUpRequest updated = requestRepository.save(request);
 
-        return mapToDto(request);
+        return mapToDto(updated);
     }
 
     private CreditTopUpRequestDTO mapToDto(CreditTopUpRequest request) {
         CreditTopUpRequestDTO dto = new CreditTopUpRequestDTO();
         dto.setId(request.getId());
         dto.setCustomerId(request.getCustomer().getId());
-        dto.setMerchantId(request.getMerchant().getId());
+        dto.setMerchantId(request.getMerchant() != null ? request.getMerchant().getId() : null);
         dto.setAmount(request.getAmount());
         dto.setStatus(request.getStatus().name());
         dto.setRequestTime(request.getRequestTime());
