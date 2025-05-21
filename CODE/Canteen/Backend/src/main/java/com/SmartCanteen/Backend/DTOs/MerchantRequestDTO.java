@@ -15,7 +15,7 @@ public class MerchantRequestDTO {
     @Email(message = "Invalid email format")
     private String email;
 
-    @NotBlank(message = "Full name is required")
+    @NotBlank(message = "Canteen name is required")
     private String fullName;
 
     @NotBlank(message = "Password is required")
@@ -25,6 +25,6 @@ public class MerchantRequestDTO {
 
     private String fingerprintID;
 
-    @NotNull(message = "Credit balance is required")
+
     private Double creditBalance;
 }

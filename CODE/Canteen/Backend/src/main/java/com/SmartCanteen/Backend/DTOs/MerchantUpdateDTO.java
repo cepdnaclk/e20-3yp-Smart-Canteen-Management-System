@@ -11,7 +11,7 @@ public class MerchantUpdateDTO {
     @Email(message = "Invalid email format")
     private String email;
 
-    @NotBlank(message = "Full name is required")
+    @NotBlank(message = "Canteen name is required")
     private String fullName;
 
     private String cardID;
