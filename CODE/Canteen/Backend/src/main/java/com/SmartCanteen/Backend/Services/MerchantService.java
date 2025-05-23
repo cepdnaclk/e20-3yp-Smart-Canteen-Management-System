@@ -41,8 +41,6 @@ public class MerchantService {
 
         merchant.setEmail(updateDTO.getEmail());
         merchant.setFullName(updateDTO.getFullName());
-        merchant.setCardID(updateDTO.getCardID());
-        merchant.setFingerprintID(updateDTO.getFingerprintID());
         // Add merchant-specific fields if any
 
         merchantRepository.save(merchant);
