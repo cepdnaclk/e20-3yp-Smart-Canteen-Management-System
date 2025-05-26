@@ -39,7 +39,7 @@ const Register = () => {
     }
   };
 
-  const validateForm = () => {
+  const validateForm = async() => {
     const newErrors = {};
     
     // Name validation
@@ -79,17 +79,51 @@ if (!formData.password) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
     if (validateForm()) {
+      try{
       // registration logic
-        
-      
+      const response = await fetch('http://localhost:8081/api/auth/register/customer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          username: formData.username,
+          creditBalance: 0
+        })
+      }
+      );
+      if (!response.ok) {
+        let errorMessage = 'Registration failed. Please try again.';
+
+        try{
+          const erroData = await response.json();
+          errorMessage = erroData.message || errorMessage;
+        }catch (error) {
+          console.error('Error parsing error response:', error);
+        }
+
+        setErrors(errorMessage);
+        console.error('Registration error:', errorMessage);
+        return;
+
+      }
+      //register successful
       console.log('Form submitted:', formData);
-      
-      // Redirect to home page or verification page on successful registration
-      navigate('/home');
+
+      // Redirect to Login page 
+      navigate('/login');
+
+    }catch(e){
+      setErrors("Network error. Please try again later.");
+      console.error('Network error: ',error);
+    }
     }
   };
 
@@ -118,6 +152,23 @@ if (!formData.password) {
                 name="fullName"
                 placeholder="Enter your full name"
                 value={formData.fullName}
+                onChange={handleChange}
+                className={errors.fullName ? 'error' : ''}
+              />
+            </div>
+            {errors.fullName && <span className="error-message">{errors.fullName}</span>}
+          </div>
+
+           <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <div className="input-wrapper">
+              <i className="icon user-icon"></i>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={formData.username}
                 onChange={handleChange}
                 className={errors.fullName ? 'error' : ''}
               />

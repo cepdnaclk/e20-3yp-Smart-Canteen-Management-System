@@ -10,7 +10,7 @@ const facebookIcon = "https://upload.wikimedia.org/wikipedia/commons/0/05/Facebo
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
     rememberMe: false
   });
@@ -37,14 +37,14 @@ const LoginPage = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
-    // Email validation
+
+    /*// email validation
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'email is required';
     } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
-    
+*/
     // Password validation
     if (!formData.password) {
       newErrors.password = 'Password is required';
@@ -62,13 +62,13 @@ const LoginPage = () => {
     if (validateForm()) {
         
       try{
-        const response = await fetch('api/login',{
+        const response = await fetch('http://localhost:8081/api/auth/login',{
           method:'POST',
           headers:{
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            email: formData.email,
+            username: formData.username,
             password: formData.password,
             rememberMe: formData.rememberMe
           })
@@ -81,6 +81,8 @@ const LoginPage = () => {
         //get user token
         const data = await response.json();
         localStorage.setItem('userToken', data.token);
+        console.log("Token received ",data.token);
+        console.log('Form submitted:', formData);
         navigate('/home');
       }catch (error) {
         console.error('Error during login:', error);
@@ -88,10 +90,6 @@ const LoginPage = () => {
       }
 
       
-      console.log('Form submitted:', formData);
-      
-      // Redirect to home page on successful login
-      navigate('/home');
     }
   };
 
@@ -111,20 +109,20 @@ const LoginPage = () => {
         
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">username</label>
             <div className="input-wrapper">
-              <i className="icon email-icon"></i>
+              <i className="icon username-icon"></i>
               <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                value={formData.email}
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={formData.username}
                 onChange={handleChange}
-                className={errors.email ? 'error' : ''}
+                className={errors.username ? 'error' : ''}
               />
             </div>
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.username && <span className="error-message">{errors.username}</span>}
           </div>
           
           <div className="form-group">
