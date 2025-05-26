@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+nav h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3498db;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+nav h1:hover {
+  color: #2980b9;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  background: none;
+  line-height: 1.5;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+  color: #3498db;
+}
+
+nav ul li a:hover::after {
+  width: 80%;
+}
+
+/* Special styling for login and register buttons */
+nav ul li:nth-last-child(2) a,
+nav ul li:last-child a {
+  background-color: #3498db;
+  border: 1px solid #3498db;
+  color: white;
+  padding: 0.4rem 1.1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin-left: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: none;
+  position: relative;
+}
+
+nav ul li:last-child a {
+  background-color: #3498db;
+  color: white;
+}
+
+nav ul li:nth-last-child(2) a:hover,
+nav ul li:last-child a:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Remove underline effect for Login/Register */
+nav ul li:nth-last-child(2) a::after,
+nav ul li:last-child a::after {
+  display: none;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 21px;
+  position: relative;
+  z-index: 2;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #3498db;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 18px;
+}
+
+.nav-open .hamburger span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+}
+
+.nav-open .hamburger span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.nav-open .hamburger span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-brand {
+    padding: 0.5rem 0;
+  }
+  
+  .logo {
+    height: 32px;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 0;
+  }
+  
+  nav ul.show {
+    max-height: 500px;
+    padding: 0.5rem 0;
+  }
+  
+  nav ul li {
+    width: 100%;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 0.6rem;
+  }
+  
+  nav ul li a:hover::after {
+    width: 0;
+  }
+  
+  nav ul li:nth-last-child(2) a,
+  nav ul li:last-child a {
+    display: block;
+    margin: 0.3rem 0;
+    min-width: unset;
+  }
+}

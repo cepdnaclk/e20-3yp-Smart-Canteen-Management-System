@@ -1,0 +1,105 @@
+/* InputOtp.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.otp-container {
+  max-width: 360px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.otp-container h1 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 1.8rem;
+  color: var(--primary, #3498db);
+}
+
+.otp-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.otp-input {
+  width: 3.4rem;
+  height: 3.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  border: 2.5px solid #ddd;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background-color: #fafafa;
+  user-select: none;
+}
+
+.otp-input:focus {
+  border-color: var(--primary, #3498db);
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.35);
+  background-color: #fff;
+}
+
+.otp-button {
+  margin-top: 1rem;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary, #3498db);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.3);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.otp-button:hover {
+  background-color: #2a80c9;
+}
+
+.otp-button:active {
+  background-color: #1f5ea8;
+}
+
+.otp-button:disabled {
+  background-color: #a3c4f3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .otp-container {
+    max-width: 90vw;
+    padding: 1.5rem 1rem;
+  }
+  .otp-input {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .otp-button {
+    width: 100%;
+    padding: 0.85rem 0;
+  }
+}
+
+.error-message {
+  color: #e74c3c; /* red */
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 1rem;
+}

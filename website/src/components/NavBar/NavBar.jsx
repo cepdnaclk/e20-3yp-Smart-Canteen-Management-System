@@ -1,18 +1,31 @@
 import { useState } from 'react';
-import '../css/Navbar.css';
+import './/NavBar.css';
 
-import logo from '../assets/pexels-pixabay-258174.jpg'; 
+import logo from '../../assets/pexels-pixabay-258174.jpg'; 
 
 import { Link } from 'react-router-dom';
 
 
 
-function Navbar() {
+function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem('token');
+    return token ? true : false;
+  };
+
+  const handleLandHomeButton = ()=>{
+    if(checkLoggedIn()){
+      return "/home";
+    }else{
+      return "/landing"
+    }
+  }
 
   return (
     <nav className={menuOpen ? 'nav-open' : ''}>
@@ -27,11 +40,11 @@ function Navbar() {
         </div>
       </div>
       <ul className={menuOpen ? 'show' : ''}>
-        <li><Link to="#home">Home</Link></li>
-        <li><Link to="#menu">Menu</Link></li>
-        <li><Link to="#order">Order</Link></li>
-        <li><Link to="#contact">Contact</Link></li>
-        <li><Link to="/About">About</Link></li>
+        <li><Link to={handleLandHomeButton()}>Home</Link></li>
+        <li><Link to="/menu">Menu</Link></li>
+        <li><Link to="/myorders">My Orders</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/about">About</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/register">Register</Link></li>
       </ul>
@@ -39,4 +52,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
