@@ -134,4 +134,49 @@ public class CustomerService {
         return customerRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Customer not found with username: " + username));
     }
+
+
+    @Transactional
+    public OrderDTO placeOrderAsSystem(OrderDTO orderDTO, Long userId) {
+        Customer customer = customerRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Customer not found: " + userId));
+
+        Map<Long, Integer> itemsMap = orderDTO.getItems();
+        if (itemsMap == null || itemsMap.isEmpty()) {
+            throw new IllegalArgumentException("Order items cannot be empty");
+        }
+
+        Map<Long, MenuItem> menuItemMap = menuItemRepository.findAllById(itemsMap.keySet())
+                .stream().collect(Collectors.toMap(MenuItem::getId, mi -> mi));
+
+        BigDecimal total = BigDecimal.ZERO;
+        for (Map.Entry<Long, Integer> entry : itemsMap.entrySet()) {
+            MenuItem menuItem = menuItemMap.get(entry.getKey());
+            if (menuItem == null) {
+                throw new RuntimeException("MenuItem with ID " + entry.getKey() + " not found");
+            }
+            total = total.add(menuItem.getPrice().multiply(BigDecimal.valueOf(entry.getValue())));
+        }
+
+        Order order = new Order();
+        order.setCustomer(customer);
+        order.setStatus(OrderStatus.PENDING);
+        order.setOrderTime(LocalDateTime.now());
+        order.setScheduledTime(orderDTO.getScheduledTime());
+        order.setItems(itemsMap);
+        order.setTotalAmount(total);
+
+        order = orderRepository.save(order);
+
+        OrderDTO result = new OrderDTO();
+        result.setId(order.getId());
+        result.setUserId(customer.getId());
+        result.setItems(itemsMap);
+        result.setTotalAmount(total);
+        result.setStatus(order.getStatus().name());
+        result.setOrderTime(order.getOrderTime());
+        result.setScheduledTime(order.getScheduledTime());
+        return result;
+    }
 }
+
