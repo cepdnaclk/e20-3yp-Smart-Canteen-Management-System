@@ -39,11 +39,11 @@ public class MerchantCrudTests {
         merchantRequest = new MerchantRequestDTO();
         merchantRequest.setUsername(uniqueUsername);
         merchantRequest.setEmail(uniqueUsername + "@example.com");
-        merchantRequest.setFullName("Merchant User");
+        merchantRequest.setCanteenName("Merchant User");
         merchantRequest.setPassword("merchantPass123");
         merchantRequest.setCardID("MERCHANTCARD123");
         merchantRequest.setFingerprintID("MERCHANTFINGERPRINT123");
-        merchantRequest.setCreditBalance(BigDecimal.valueOf(0.0)); // if applicable
+        
 
         loginRequest = new LoginRequestDTO();
         loginRequest.setUsername(uniqueUsername);
@@ -75,7 +75,7 @@ public class MerchantCrudTests {
         // Update profile
         MerchantUpdateDTO updateDTO = new MerchantUpdateDTO();
         updateDTO.setEmail("updated_" + merchantRequest.getEmail());
-        updateDTO.setFullName("Updated Merchant");
+        updateDTO.setCanteenName("Updated Merchant");
         updateDTO.setCardID("NEWMERCHANTCARD123");
         updateDTO.setFingerprintID("NEWMERCHANTFINGERPRINT123");
 
@@ -85,14 +85,14 @@ public class MerchantCrudTests {
                         .content(objectMapper.writeValueAsString(updateDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email").value(updateDTO.getEmail()))
-                .andExpect(jsonPath("$.fullName").value(updateDTO.getFullName()));
+                .andExpect(jsonPath("$.CanteenName").value(updateDTO.getCanteenName()));
 
         // Get profile and verify update
         mockMvc.perform(get("/api/merchant/profile")
                         .header("Authorization", "Bearer " + authToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email").value(updateDTO.getEmail()))
-                .andExpect(jsonPath("$.fullName").value(updateDTO.getFullName()));
+                .andExpect(jsonPath("$.CanteenName").value(updateDTO.getCanteenName()));
 
         // Delete profile
         mockMvc.perform(delete("/api/merchant/profile")

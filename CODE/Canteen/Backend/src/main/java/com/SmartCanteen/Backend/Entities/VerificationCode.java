@@ -31,6 +31,7 @@ public class VerificationCode {
     @Column(nullable = false)
     private LocalDateTime expiresAt;
 
+    //This is not in maleesha's version
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 

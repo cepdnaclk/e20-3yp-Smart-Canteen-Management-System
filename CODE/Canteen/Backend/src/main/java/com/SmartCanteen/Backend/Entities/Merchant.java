@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "merchants")
 public class Merchant extends User {
-
+    private String canteenName;
 }

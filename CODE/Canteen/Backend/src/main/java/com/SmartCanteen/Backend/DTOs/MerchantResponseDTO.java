@@ -7,5 +7,6 @@ public class MerchantResponseDTO {
     private Long id;
     private String username;
     private String email;
-    private String fullName;
+    private String canteenName;
+    // Maleesha's has CanteenName ;
 }

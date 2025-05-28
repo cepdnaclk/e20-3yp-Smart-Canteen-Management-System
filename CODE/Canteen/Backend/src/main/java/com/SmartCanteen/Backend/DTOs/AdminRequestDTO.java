@@ -25,6 +25,7 @@ public class AdminRequestDTO {
 
     private String fingerprintID;
 
+    //This is not needed - Pathum
     @NotNull(message = "Credit balance is required")
     private Double creditBalance;
 }
