@@ -115,7 +115,7 @@ public class MerchantService {
     public MerchantResponseDTO updateProfile(MerchantUpdateDTO updateDTO) {
         Merchant merchant = getCurrentAuthenticatedMerchant();
         merchant.setEmail(updateDTO.getEmail());
-        merchant.setFullName(updateDTO.getFullName());
+        merchant.setFullName(updateDTO.getCanteenName());
         merchant.setCardID(updateDTO.getCardID());
         merchant.setFingerprintID(updateDTO.getFingerprintID());
         merchantRepository.save(merchant);

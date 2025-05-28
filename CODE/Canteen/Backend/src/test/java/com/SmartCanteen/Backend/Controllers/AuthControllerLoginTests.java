@@ -1,11 +1,7 @@
 package com.SmartCanteen.Backend.Controllers;
 
-import com.SmartCanteen.Backend.DTOs.CustomerRequestDTO;
-import com.SmartCanteen.Backend.DTOs.LoginRequestDTO;
-import com.SmartCanteen.Backend.Repositories.CreditTopUpRequestRepository;
-import com.SmartCanteen.Backend.Repositories.CustomerRepository;
-import com.SmartCanteen.Backend.Repositories.MerchantRepository;
-import com.SmartCanteen.Backend.Repositories.UserRepository;
+import com.SmartCanteen.Backend.DTOs.*;
+import com.SmartCanteen.Backend.Repositories.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +28,7 @@ public class AuthControllerLoginTests {
     private UserRepository userRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerRepository customer1Repository;
 
     @Autowired
     private MerchantRepository merchantRepository;
@@ -45,16 +41,11 @@ public class AuthControllerLoginTests {
 
     @BeforeEach
     public void setup() {
-        // Delete child tables/entities first to avoid FK constraint errors
         creditTopUpRequestRepository.deleteAll();
-        // If you have other child tables, delete them here
-
-        // Then delete parent tables/entities
-        customerRepository.deleteAll();
+        customer1Repository.deleteAll();
         merchantRepository.deleteAll();
         userRepository.deleteAll();
 
-        // Now set up your test data as before
         String username = "loginuser1";
         customerRequest = new CustomerRequestDTO();
         customerRequest.setUsername(username);
@@ -72,13 +63,11 @@ public class AuthControllerLoginTests {
 
     @Test
     public void login_ValidCredentials_ShouldReturnToken() throws Exception {
-        // Register user first
         mockMvc.perform(post("/api/auth/register/customer")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(customerRequest)))
                 .andExpect(status().isOk());
 
-        // Then login
         mockMvc.perform(post("/api/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(loginRequest)))
@@ -90,13 +79,11 @@ public class AuthControllerLoginTests {
 
     @Test
     public void login_InvalidPassword_ShouldReturnUnauthorized() throws Exception {
-        // Register user first
         mockMvc.perform(post("/api/auth/register/customer")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(customerRequest)))
                 .andExpect(status().isOk());
 
-        // Attempt login with wrong password
         loginRequest.setPassword("wrongpassword");
 
         mockMvc.perform(post("/api/auth/login")
@@ -108,7 +95,6 @@ public class AuthControllerLoginTests {
 
     @Test
     public void login_NonExistentUser_ShouldReturnUnauthorized() throws Exception {
-        // Attempt login with a username that does not exist
         loginRequest.setUsername("nonexistentuser");
         loginRequest.setPassword("anyPassword");
 
@@ -117,5 +103,27 @@ public class AuthControllerLoginTests {
                         .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isUnauthorized())
                 .andExpect(jsonPath("$.message").value("Invalid username or password"));
+    }
+
+    @Test
+    public void login_EmptyUsername_ShouldReturnBadRequest() throws Exception {
+        loginRequest.setUsername("");
+        loginRequest.setPassword("password1232");
+
+        mockMvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(loginRequest)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void login_EmptyPassword_ShouldReturnBadRequest() throws Exception {
+        loginRequest.setUsername("loginuser1");
+        loginRequest.setPassword("");
+
+        mockMvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(loginRequest)))
+                .andExpect(status().isBadRequest());
     }
 }

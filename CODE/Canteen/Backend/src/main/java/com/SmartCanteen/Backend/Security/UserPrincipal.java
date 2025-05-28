@@ -1,6 +1,7 @@
 package com.SmartCanteen.Backend.Security;
 
 import com.SmartCanteen.Backend.Entities.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,14 +10,15 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class UserPrincipal implements UserDetails {
+    @Getter
     private final Long id;
-    private final String username;
+    private final String email; // Use email as principal name
     private final String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.username = username;
+        this.email = email;
         this.password = password;
         this.authorities = authorities;
     }
@@ -24,14 +26,10 @@ public class UserPrincipal implements UserDetails {
     public static UserPrincipal create(User user) {
         return new UserPrincipal(
                 user.getId(),
-                user.getUsername(),
+                user.getEmail(), // Use email, not username
                 user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name()))
         );
-    }
-
-    public Long getId() {
-        return id;
     }
 
     @Override
@@ -44,7 +42,7 @@ public class UserPrincipal implements UserDetails {
     }
     @Override
     public String getUsername() {
-        return username;
+        return email; // Return email as principal name
     }
     @Override
     public boolean isAccountNonExpired() {

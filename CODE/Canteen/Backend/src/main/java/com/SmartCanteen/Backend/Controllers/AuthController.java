@@ -2,15 +2,24 @@ package com.SmartCanteen.Backend.Controllers;
 
 import com.SmartCanteen.Backend.DTOs.*;
 import com.SmartCanteen.Backend.Services.AuthService;
+import com.SmartCanteen.Backend.Services.EmailService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
+
+    private static final Logger log = LoggerFactory.getLogger(EmailService.class);
+
 
     private final AuthService authService;
 
@@ -36,5 +45,25 @@ public class AuthController {
     public ResponseEntity<AdminResponseDTO> registerAdmin(@Valid @RequestBody AdminRequestDTO adminRequestDTO) {
         AdminResponseDTO response = authService.registerAdmin(adminRequestDTO);
         return ResponseEntity.ok(response);
+    }
+    @PostMapping("/verify-email")
+    public ResponseEntity<?> verifyEmail(@Valid @RequestBody VerifyEmailRequestDTO dto) {
+        try {
+            AuthResponseDTO response = authService.verifyEmail(dto);
+            log.info("Email verified successfully: {}", dto.getEmail());
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e) {
+            log.warn("Client error during verification for {}: {}", dto.getEmail(), e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (RuntimeException e) {
+            log.error("Server error during verification for {}: {}", dto.getEmail(), e.getMessage());
+            return ResponseEntity.internalServerError().body("Verification process failed");
+        }
+    }
+
+    @PostMapping("/resend-code")
+    public ResponseEntity<String> resendCode(@RequestBody ResendCodeRequestDTO dto) throws MessagingException {
+        authService.resendVerificationCode(dto);
+        return ResponseEntity.ok("Verification code resent successfully");
     }
 }

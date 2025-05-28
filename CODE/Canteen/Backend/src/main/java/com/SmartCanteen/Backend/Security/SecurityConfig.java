@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .authorizeHttpRequests(auth -> auth
                         // Auth endpoints
-                        .requestMatchers("/api/auth/login", "/api/auth/register/**").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/auth/register/**","/api/auth/verify-email","/api/auth/resend-code").permitAll()
 
                         // Categories endpoints - allow all for testing; secure later as needed
                         .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()

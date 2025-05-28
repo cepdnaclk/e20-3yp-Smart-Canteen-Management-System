@@ -18,16 +18,13 @@ public class MerchantRequestDTO {
     private String email;
 
     @NotBlank(message = "Canteen name is required")
-    private String fullName;
+    private String canteenName;
 
     @NotBlank(message = "Password is required")
     private String password;
 
     private String cardID;
-
     private String fingerprintID;
 
-
-    private BigDecimal creditBalance;
 
 }

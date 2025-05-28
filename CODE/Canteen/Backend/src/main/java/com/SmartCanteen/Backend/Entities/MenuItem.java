@@ -26,4 +26,8 @@ public class MenuItem {
 
     @Column(nullable = false)
     private Integer stock;
+
+    //Maleesha Addded
+    @Version
+    private Integer version;
 }

@@ -28,9 +28,10 @@ public class AdminController {
 
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers() {
-        var users = adminService.getAllUsers();
-        return ResponseEntity.ok(users);
+        var admins = adminService.getAllAdmins(); // Call getAllAdmins(), not getAllUsers()
+        return ResponseEntity.ok(admins);
     }
+
 
     @PutMapping("/user/{id}/role")
     public ResponseEntity<?> updateUserRole(@PathVariable Long id, @RequestParam String role) {
@@ -62,4 +63,6 @@ public class AdminController {
         adminService.deleteCurrentAdmin();
         return ResponseEntity.ok("Admin deleted successfully");
     }
+
+
 }

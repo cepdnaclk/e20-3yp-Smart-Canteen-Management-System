@@ -11,7 +11,7 @@ public class MerchantUpdateDTO {
     private String email;
 
     @NotBlank(message = "Canteen name is required")
-    private String fullName;
+    private String canteenName;
 
     private String cardID;
     private String fingerprintID;
