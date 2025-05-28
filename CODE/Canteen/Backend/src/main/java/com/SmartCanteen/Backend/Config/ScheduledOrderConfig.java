@@ -1,6 +1,5 @@
 package com.SmartCanteen.Backend.Config;
 
-import com.SmartCanteen.Backend.DTOs.CartItemDTO;
 import com.SmartCanteen.Backend.DTOs.OrderDTO;
 import com.SmartCanteen.Backend.Entities.ScheduledOrder;
 import com.SmartCanteen.Backend.Repositories.ScheduledOrderRepository;
@@ -24,25 +23,34 @@ public class ScheduledOrderConfig {
     private final CustomerService customerService;
     private final NotificationService notificationService;
 
-    @Scheduled(fixedRate = 60000) // Every minute
+    @Scheduled(fixedRate = 60000)
     public void processScheduledOrders() {
         LocalDateTime now = LocalDateTime.now();
         List<ScheduledOrder> orders = scheduledOrderRepository.findByScheduledTimeBeforeAndProcessedFalse(now);
         for (ScheduledOrder order : orders) {
-            OrderDTO orderDTO = new OrderDTO();
-            orderDTO.setUserId(order.getUserId());
-            orderDTO.setItems(order.getItems().stream()
-                    .collect(Collectors.toMap(
-                            item -> item.getMenuItemId(),
-                            item -> item.getQuantity()
-                    )));
+            try {
+                OrderDTO orderDTO = new OrderDTO();
+                orderDTO.setUserId(order.getUserId());
+                orderDTO.setItems(order.getItems().stream()
+                        .collect(Collectors.toMap(
+                                item -> item.getMenuItemId(),
+                                item -> item.getQuantity()
+                        )));
+                orderDTO.setScheduledTime(order.getScheduledTime());
 
-            orderDTO.setScheduledTime(order.getScheduledTime());
-            OrderDTO placedOrder = customerService.placeOrder(orderDTO);
-            order.setProcessed(true);
-            scheduledOrderRepository.save(order);
-            BigDecimal newBalance = customerService.getCreditBalance(order.getUserId());
-            notificationService.sendOrderNotification(order.getUserId(), placedOrder, newBalance);
+                // This will throw if customer doesn't exist
+                OrderDTO placedOrder = customerService.placeOrderAsSystem(orderDTO, order.getUserId());
+
+                order.setProcessed(true);
+                scheduledOrderRepository.save(order);
+
+                BigDecimal newBalance = customerService.getCreditBalance(order.getUserId());
+                notificationService.sendOrderNotification(order.getUserId(), placedOrder, newBalance);
+            } catch (RuntimeException ex) {
+                // Log and skip this order, do not mark as processed
+                System.err.println("Scheduled order " + order.getId() + " failed: " + ex.getMessage());
+                // Optionally: Add a retry count or failure reason to the order entity
+            }
         }
     }
 }

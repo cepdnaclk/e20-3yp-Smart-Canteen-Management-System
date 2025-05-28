@@ -1,8 +1,9 @@
 package com.SmartCanteen.Backend.Services;
 
-import com.SmartCanteen.Backend.DTOs.OrderDTO;
 import com.SmartCanteen.Backend.DTOs.ScheduledOrderDTO;
 import com.SmartCanteen.Backend.Entities.ScheduledOrder;
+import com.SmartCanteen.Backend.Exceptions.ResourceNotFoundException;
+import com.SmartCanteen.Backend.Repositories.CustomerRepository;
 import com.SmartCanteen.Backend.Repositories.ScheduledOrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -16,15 +17,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ScheduledOrderService {
     private final ScheduledOrderRepository scheduledOrderRepository;
+    private final CustomerRepository customerRepository;
     private final OrderService orderService;
     private final NotificationService notificationService;
     private final ModelMapper modelMapper;
 
+
     public ScheduledOrderDTO scheduleOrder(Long userId, ScheduledOrderDTO dto) {
+        boolean exists = customerRepository.existsById(userId);
+        if (!exists) {
+            throw new ResourceNotFoundException("Customer not found: " + userId);
+        }
         ScheduledOrder order = new ScheduledOrder();
         order.setUserId(userId);
         order.setScheduledTime(dto.getScheduledTime());
-        // Convert List<CartItemDTO> to your entity format if needed (if you want to store items)
         scheduledOrderRepository.save(order);
         notificationService.sendScheduledOrderNotification(userId, dto.getScheduledTime().toString());
         return modelMapper.map(order, ScheduledOrderDTO.class);
