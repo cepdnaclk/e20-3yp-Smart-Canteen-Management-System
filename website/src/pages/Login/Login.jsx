@@ -81,6 +81,7 @@ const LoginPage = () => {
         //get user token
         const data = await response.json();
         localStorage.setItem('userToken', data.token);
+        localStorage.setItem('user',formData.username);
         console.log("Token received ",data.token);
         console.log('Form submitted:', formData);
         navigate('/home');

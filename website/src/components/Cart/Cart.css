@@ -1,0 +1,68 @@
+/* Container for the whole cart page */
+.sc-cart-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title */
+.sc-cart-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #222;
+  text-align: center;
+}
+
+/* Empty cart message */
+.sc-cart-empty {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* List of cart items */
+.sc-cart-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+/* Checkout button */
+.sc-cart-checkout-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 14px 0;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sc-cart-checkout-btn:disabled {
+  background-color: #94d3a2;
+  cursor: not-allowed;
+}
+
+.sc-cart-checkout-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+/* Error message */
+.sc-cart-error {
+  color: #d9534f;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 20px;
+}
