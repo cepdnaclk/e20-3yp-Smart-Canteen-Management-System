@@ -1,5 +1,6 @@
 package com.SmartCanteen.Backend.Repositories;
 
+import com.SmartCanteen.Backend.Entities.MenuItem;
 import com.SmartCanteen.Backend.Entities.TodaysMenuItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,4 +12,5 @@ public interface TodaysMenuRepository extends JpaRepository<TodaysMenuItem, Long
     void deleteByDate(LocalDate date);
     boolean existsByMenuItemIdAndDate(Long menuItemId, LocalDate date);
 
+    void deleteByMenuItem(MenuItem menuItemToDelete);
 }
