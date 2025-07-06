@@ -1,6 +1,6 @@
 ---
 layout: home
-permalink: index2.html
+permalink: index.html
 
 # Please update this with your repository name and project title
 repository-name: e20-3yp-Smart-Canteen-Management-System
