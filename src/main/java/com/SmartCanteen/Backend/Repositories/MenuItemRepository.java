@@ -25,4 +25,6 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 
     // --- NEW: To get all items for a specific merchant ---
     List<MenuItem> findByCategory_Merchant_Id(Long merchantId);
+
+
 }

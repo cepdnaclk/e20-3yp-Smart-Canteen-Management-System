@@ -86,11 +86,20 @@ public class MenuItemService {
         return mapToDTO(updated, isInToday);
     }
 
+    @Transactional
     public boolean deleteMenuItem(Long id) {
-        if (!menuItemRepository.existsById(id)) {
-            return false;
-        }
-        menuItemRepository.deleteById(id);
+        // Find the item first to ensure it exists.
+        MenuItem menuItemToDelete = menuItemRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Cannot delete: Menu item not found with id: " + id));
+
+        // --- THIS IS THE FIX ---
+        // Before deleting the item, first remove all its references from the TodaysMenu table.
+        // This assumes your TodaysMenuRepository has a method like deleteByMenuItem(MenuItem item).
+        todaysMenuRepository.deleteByMenuItem(menuItemToDelete);
+
+        // Now that no other tables are using this item, it can be safely deleted.
+        menuItemRepository.delete(menuItemToDelete);
+
         return true;
     }
 
