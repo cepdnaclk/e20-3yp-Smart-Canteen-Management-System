@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+opencv-python
+torch
+torchvision
+numpy
