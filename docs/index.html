@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A project page for the Smart Canteen Management System, a project by Group 01 at the University of Peradeniya to optimize canteen operations." />
+  <title>Smart Canteen Management System | Project by Group 01</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Custom Styles */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --light-gray: #f8f9fa;
+      --white: #ffffff;
+      --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body { font-family: 'Poppins', sans-serif; margin-top: 70px; background-color: var(--white); color: #343a40; line-height: 1.7; }
+
+    /* --- Reusable Components --- */
+    .card { border: none; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s; height: 100%; border: 1px solid transparent; }
+    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--primary-color); }
+    .content-section { padding: 80px 20px; overflow-x: hidden; }
+    .content-section:nth-of-type(even) { background-color: var(--light-gray); }
+    .section-header { margin-bottom: 50px; text-align: center; }
+    .section-header h2 { font-size: 2.8rem; font-weight: 700; color: var(--secondary-color); position: relative; display: inline-block; padding-bottom: 15px; }
+    .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); border-radius: 2px; }
+    .list-icon li { display: flex; align-items: flex-start; margin-bottom: 12px; }
+    .list-icon .bi { font-size: 1.3rem; color: var(--success-color); margin-right: 15px; margin-top: 5px; }
+    .nav-pills .nav-link { background-color: #e9ecef; color: var(--secondary-color); font-weight: 600; margin: 0 5px; border-radius: 50px; padding: 10px 25px; }
+    .nav-pills .nav-link.active { background-color: var(--primary-color); color: var(--white); box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4); }
+
+    /* --- Navigation Bar --- */
+    .navbar { background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); position: fixed; top: 0; width: 100%; z-index: 1030; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: top 0.3s ease-in-out; }
+    .nav-link { color: rgba(255, 255, 255, 0.85); padding: 10px 15px !important; font-weight: 500; border-radius: 8px; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--white); background-color: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+
+    /* --- Hero Section --- */
+    .hero-section { background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85)), url('https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/background.jpg') center/cover no-repeat fixed; color: var(--white); text-align: center; padding: 140px 20px; }
+    .hero-section h1 { font-size: 3.8rem; font-weight: 700; }
+    .hero-subtitle { font-size: 1.5rem; max-width: 800px; margin: 20px auto 30px; height: 50px; }
+    .typed-cursor { opacity: 1; animation: blink 0.7s infinite; } @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    
+    /* --- Impact Section --- */
+    .impact-card { text-align: center; }
+    .impact-card .icon { font-size: 3rem; color: var(--primary-color); }
+    .impact-card .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); }
+    .impact-card h5 { font-weight: 500; color: #555; }
+    
+    /* --- Architecture & Diagram --- */
+    .architecture-diagram { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .architecture-diagram:hover { transform: scale(1.03); box-shadow: var(--shadow-md); }
+    #diagramModal .modal-dialog { max-width: 90%; }
+
+    /* --- Footer --- */
+    footer { background: var(--secondary-color); color: rgba(255, 255, 255, 0.8); text-align: center; padding: 40px 20px; }
+    footer a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="80">
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="main-nav">
+    <div class="container">
+      <a class="navbar-brand" href="#">Smart Canteen</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto text-center" id="navbar">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#scope" class="nav-link">Scope</a></li>
+          <li class="nav-item"><a href="#functionalities" class="nav-link">Functionalities</a></li>
+          <li class="nav-item"><a href="#tech" class="nav-link">Technology</a></li>
+          <li class="nav-item"><a href="#testing" class="nav-link">Testing</a></li>
+          <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="hero-section">
+    <h1 data-aos="fade-down">Smart Canteen Management System</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200"><span id="typed-subtitle"></span></p>
+  </section>
+  
+  <section id="about" class="content-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Project Overview</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-7" data-aos="fade-right">
+          <h4>Purpose and Goals</h4>
+          <p>The primary goal of this project is to improve the overall experience of ordering and dining in canteens by leveraging modern technology. Our objectives include:</p>
+          <ul class="list-unstyled list-icon">
+            <li><i class="bi bi-dash-circle-fill"></i>To reduce long queues and minimize delays in food services.</li>
+            <li><i class="bi bi-credit-card-fill"></i>To establish a fully cashless system for all financial transactions.</li>
+            <li><i class="bi bi-cloud-fill"></i>To provide online services for checking balances and canteen availability.</li>
+            <li><i class="bi bi-graph-up-arrow"></i>To improve the overall efficiency and productivity of the canteen staff.</li>
+          </ul>
+        </div>
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="card p-4">
+            <h4 class="card-title text-center">Key Stakeholders</h4>
+            <p class="text-center">This system is designed for a variety of environments, primarily:</p>
+            <ul class="list-unstyled text-center">
+              <li><i class="bi bi-bank me-2"></i>University Canteens</li>
+              <li><i class="bi bi-building me-2"></i>Corporate Canteens</li>
+              <li><i class="bi bi-shop me-2"></i>Closed-Environment Food Services</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="content-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Demonstrated Impact</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="impact-card">
+                    <div class="icon"><i class="bi bi-clock-history"></i></div>
+                    <div class="counter" data-target="50">0</div>
+                    <h5>Reduction in Wait Times (%)</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="impact-card">
+                    <div class="icon"><i class="bi bi-cash-coin"></i></div>
+                    <div class="counter" data-target="100">0</div>
+                    <h5>Cashless Transaction Rate (%)</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="impact-card">
+                    <div class="icon"><i class="bi bi-check-circle"></i></div>
+                    <div class="counter" data-target="95">0</div>
+                    <h5>User Satisfaction Increase (%)</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <section id="scope" class="content-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Project Scope</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-4" data-aos="fade-right">
+          <div class="card p-4 bg-light">
+            <h4 class="text-success"><i class="bi bi-check-circle-fill me-2"></i>In Scope</h4>
+            <ul class="list-unstyled list-icon">
+              <li><i class="bi bi-person-check"></i>User Registration & Two-Factor Authentication.</li>
+              <li><i class="bi bi-card-checklist"></i>Full Food Menu & Inventory Management.</li>
+              <li><i class="bi bi-phone"></i>Online Ordering via Web/Mobile Application.</li>
+              <li><i class="bi bi-credit-card-2-front"></i>RFID & Online Payment Gateway Integration.</li>
+              <li><i class="bi bi-truck"></i>Live Order Tracking & Status Notifications.</li>
+              <li><i class="bi bi-file-earmark-bar-graph"></i>Sales & Performance Reporting for Admins.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4" data-aos="fade-left">
+          <div class="card p-4 bg-light">
+            <h4 class="text-danger"><i class="bi bi-x-circle-fill me-2"></i>Out of Scope</h4>
+            <ul class="list-unstyled list-icon">
+              <li><i class="bi bi-robot"></i>AI-based Menu Recommendations.</li>
+              <li><i class="bi bi-translate"></i>Multi-Language Support beyond English.</li>
+              <li><i class="bi bi-tag"></i>Dynamic Pricing Models.</li>
+              <li><i class="bi bi-bicycle"></i>Third-Party Delivery Service Integration.</li>
+              <li><i class="bi bi-person-bounding-box"></i>Facial Recognition Authentication.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="functionalities" class="content-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>System Functionalities</h2>
+      </div>
+
+      <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist" data-aos="fade-up">
+        <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-customer">For Customers</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-staff">For Canteen Staff</button></li>
+      </ul>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-customer">
+          <div class="row justify-content-center text-center">
+            <div class="col-md-4 mb-3" data-aos="zoom-in"><h5><i class="bi bi-person-plus text-primary"></i> Register & Login</h5></div>
+            <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="50"><h5><i class="bi bi-credit-card text-primary"></i> Cashless Payments</h5></div>
+            <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="100"><h5><i class="bi bi-phone text-primary"></i> Order Online</h5></div>
+            <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="150"><h5><i class="bi bi-calendar-check text-primary"></i> Schedule Orders</h5></div>
+            <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="200"><h5><i class="bi bi-eye text-primary"></i> View Menu & Prices</h5></div>
+            <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="250"><h5><i class="bi bi-clock-history text-primary"></i> View Past Transactions</h5></div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-staff">
+          <div class="row justify-content-center text-center">
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-people text-primary"></i> Manage Users</h5></div>
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-box-seam text-primary"></i> Manage Inventory</h5></div>
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-card-checklist text-primary"></i> Manage Food Items</h5></div>
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-receipt text-primary"></i> Automated Billing</h5></div>
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-graph-up text-primary"></i> View Sales Reports</h5></div>
+            <div class="col-md-4 mb-3"><h5><i class="bi bi-bell text-primary"></i> Send Notifications</h5></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech" class="content-section">
+      <div class="container">
+          <div class="section-header" data-aos="fade-up">
+              <h2>Technology & Architecture</h2>
+          </div>
+          <div class="row align-items-center">
+              <div class="col-lg-7" data-aos="fade-right">
+                  <h4>System Class Diagram</h4>
+                  <p>The system's architecture is built upon a well-defined set of classes and relationships to ensure modularity and scalability. Key classes include `User`, `Customer`, `Order`, `FoodItem`, and `Transaction`. Click the diagram to view a larger version.</p>
+                  <img src="https://i.imgur.com/gI2KAXs.jpeg" alt="System Class Diagram" class="img-fluid rounded shadow-sm architecture-diagram" data-bs-toggle="modal" data-bs-target="#diagramModal" />
+              </div>
+              <div class="col-lg-5" data-aos="fade-left">
+                  <div class="card p-4 mt-4 mt-lg-0">
+                      <h4 class="card-title text-center">Core Technology Stack</h4>
+                      <ul class="list-unstyled">
+                          <li><i class="bi bi-file-code-fill me-2 text-primary"></i><strong>Backend:</strong> Spring Boot (Java)</li>
+                          <li><i class="bi bi-phone-fill me-2 text-primary"></i><strong>Frontend:</strong> Flutter</li>
+                          <li><i class="bi bi-database-fill me-2 text-primary"></i><strong>Database:</strong> PostgreSQL</li>
+                          <li><i class="bi bi-robot me-2 text-primary"></i><strong>Hardware Scripting:</strong> Python</li>
+                          <li><i class="bi bi-hdd-network-fill me-2 text-primary"></i><strong>Communication:</strong> REST APIs & WebSockets</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <section id="testing" class="content-section">
+      <div class="container">
+          <div class="section-header" data-aos="fade-up">
+              <h2>Testing & Security</h2>
+          </div>
+          <div class="row align-items-center">
+              <div class="col-lg-6" data-aos="fade-right">
+                  <h4 class="mb-3">Rigorous Testing Approach</h4>
+                  <p>To ensure reliability, we employed a multi-faceted testing strategy:</p>
+                  <ul>
+                      <li><strong>Unit & Integrated Testing:</strong> Performed on all major components.</li>
+                      <li><strong>API Testing:</strong> Used Postman for backend endpoint validation.</li>
+                      <li><strong>Hardware Testing:</strong> On-site testing for the people counter and authentication modules.</li>
+                      <li><strong>Real-time System Testing:</strong> Utilized Mosquitto for MQTT architecture testing.</li>
+                  </ul>
+              </div>
+              <div class="col-lg-6" data-aos="fade-left">
+                  <div class="card p-4 bg-light">
+                      <h4 class="mb-3"><i class="bi bi-shield-shaded me-2"></i>Robust Security Measures</h4>
+                      <ul class="list-unstyled">
+                          <li><i class="bi bi-check-circle-fill text-success me-2"></i><strong>JWT Token Usage</strong> for secure, stateless authentication.</li>
+                          <li><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Spring Security</strong> for authentication and access-control.</li>
+                          <li><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Hashed Passwords</strong> for secure user credential storage.</li>
+                          <li><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Role-Based Access Control (RBAC)</strong> to restrict system access.</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <section id="budget" class="content-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Project Budget</h2>
+      </div>
+      <div class="table-responsive" data-aos="fade-up">
+        <table class="table table-striped table-hover text-center">
+          <thead class="bg-dark text-white">
+            <tr><th>Item</th><th>Quantity</th><th>Unit Cost (LKR)</th><th>Total Cost (LKR)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Raspberry Pi 3B+</td><td>1</td><td>11,800</td><td>11,800</td></tr>
+            <tr><td>Touch Display</td><td>1</td><td>8,000</td><td>8,000</td></tr>
+            <tr><td>Camera Module</td><td>1</td><td>2,800</td><td>2,800</td></tr>
+            <tr><td>Fingerprint Scanner</td><td>1</td><td>4,900</td><td>4,900</td></tr>
+            <tr><td>RFID Scanner</td><td>1</td><td>2,900</td><td>2,900</td></tr>
+            <tr><td>Other Expenses</td><td>-</td><td>8,000</td><td>8,000</td></tr>
+          </tbody>
+          <tfoot class="fw-bold">
+            <tr><td colspan="3" class="text-end">Estimated Total</td><td class="fs-5">38,400 LKR</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="content-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Meet The Team (Group 01)</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-3 team-member text-center mb-4" data-aos="fade-up">
+          <img src="https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/pathum.jpg" alt="Team member Pathum Dissanayake" class="img-fluid rounded-circle"/>
+          <h5 class="mt-3">Dissanayake P.D.</h5><p class="text-muted">E/20/084</p>
+        </div>
+        <div class="col-6 col-md-3 team-member text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/maleesha.jpg" alt="Team member Maleesha Gunasinha" class="img-fluid rounded-circle"/>
+          <h5 class="mt-3">Gunasinha H.P.M.S.</h5><p class="text-muted">E/20/121</p>
+        </div>
+        <div class="col-6 col-md-3 team-member text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/sandun.jpg" alt="Team member Sandun Munasinghe" class="img-fluid rounded-circle"/>
+          <h5 class="mt-3">Munasinghe S.L.</h5><p class="text-muted">E/20/259</p>
+        </div>
+        <div class="col-6 col-md-3 team-member text-center mb-4" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/manuja.jpg" alt="Team member Manuja Shyamantha" class="img-fluid rounded-circle"/>
+          <h5 class="mt-3">Shyamantha R.M.M.</h5><p class="text-muted">E/20/376</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Smart Canteen Management System | Group 01, CO328 | Department of Computer Engineering, <a href="https://eng.pdn.ac.lk/" target="_blank" rel="noopener noreferrer">University of Peradeniya</a>.</p>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="diagramModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content"><div class="modal-header"><h5 class="modal-title">System Class Diagram</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+          <div class="modal-body text-center"><img src="https://i.imgur.com/gI2KAXs.jpeg" class="img-fluid" alt="Enlarged System Class Diagram"></div>
+        </div>
+      </div>
+    </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // Initialize AOS (Animate on Scroll)
+    AOS.init({ duration: 800, once: true, easing: 'ease-in-out' });
+
+    // Typing animation for Hero Subtitle
+    new Typed('#typed-subtitle', {
+      strings: ['An integrated hardware and software solution.', 'Designed to minimize delays and maximize efficiency.', 'Welcome to the future of canteen management.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      backDelay: 2000,
+      loop: true
+    });
+
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200; 
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => observer.observe(counter));
+  </script>
+</body>
+</html>
