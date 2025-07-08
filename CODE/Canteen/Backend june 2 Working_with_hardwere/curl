@@ -1,0 +1,2 @@
+      PID    PPID    PGID     WINPID  TTY  UID    STIME COMMAND
+    22392       1   22392      22392  con  500 22:28:59 /usr/bin/ps
