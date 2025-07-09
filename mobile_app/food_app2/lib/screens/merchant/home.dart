@@ -7,6 +7,7 @@ import 'package:food_app/screens/merchant/manage_menu_screen.dart';
 import 'package:food_app/screens/merchant/merchant_profile_screen.dart';
 import 'package:food_app/screens/merchant/merchant_reports_screen.dart';
 import 'package:food_app/screens/merchant/order_management_screen.dart';
+import 'package:food_app/screens/merchant/register_new_user.dart';
 import 'package:food_app/screens/merchant/top_up_requests_screen.dart';
 import 'package:food_app/widgets/app_drawer.dart';
 import 'package:http/http.dart' as http;
@@ -214,6 +215,9 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
         }),
         _buildActionCard('Sales Reports', Icons.bar_chart, Colors.teal, () {
           _navigateAndRefresh(const MerchantReportsScreen());
+        }),
+        _buildActionCard('Register New User', Icons.person_add, Colors.teal, () {
+          _navigateAndRefresh(const RegisterNewUserPage());
         }),
       ],
     );
