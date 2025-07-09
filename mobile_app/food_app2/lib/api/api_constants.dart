@@ -108,7 +108,8 @@
 
 
 class ApiConstants {
-  static const String baseUrl = 'http://13.229.83.22:8081'; // Use your actual IP
+  //static const String baseUrl = 'http://13.229.83.22:8081';
+  static const String baseUrl = 'http://192.168.237.203:8081';
 
   // Auth
   static const String login = '/api/auth/login';
