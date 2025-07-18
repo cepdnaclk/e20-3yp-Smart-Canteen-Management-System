@@ -69,16 +69,6 @@ Explore images of our custom hardware components and the assembled unit.
 ![Hardware Component 3](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/hardware-image-3.jpg)
 ![Hardware Component 4](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/hardware-image-4.jpg)
 
-## App Screenshots
-
-Get a glimpse of the mobile application's user interface.
-
-![Mobile App Screenshot: Login](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/Login.png)
-![Mobile App Screenshot: Menu](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/menu.png)
-![Mobile App Screenshot: My Orders](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/My%20orders.png)
-![Mobile App Screenshot: Place Order](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/Place_order.png)
-![Mobile App Screenshot: Merchant Dashboard](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/merchant_dashboard.png)
-![Mobile App Screenshot: Sales Report](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/sales_report.png)
 
 ## Technologies Utilized
 
