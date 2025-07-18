@@ -80,6 +80,20 @@ Get a glimpse of the mobile application's user interface.
 ![Mobile App Screenshot: Merchant Dashboard](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/merchant_dashboard.png)
 ![Mobile App Screenshot: Sales Report](https://raw.githubusercontent.com/cepdnaclk/e20-3yp-Smart-Canteen-Management-System/main/docs/images/sales_report.png)
 
+## Technologies Utilized
+
+Our Smart Canteen Management System is built upon a robust stack of modern technologies:
+
+* **Web Technologies:**
+    * **HTML, CSS, JavaScript, PHP:** These core web technologies form the backbone of our responsive and interactive user interfaces for both customers and cafeteria management, ensuring a seamless and intuitive experience across various devices.
+* **Embedded Systems:**
+    * **Raspberry Pi, IoT:** These embedded systems are crucial for controlling physical devices within the canteen environment. This includes capabilities for precise stock counting, managing smart dispensers, and enabling sensor-based inventory tracking, bringing real-world automation to the system.
+* **Network Security:**
+    * **SSL/TLS Encryption:** Implementing SSL/TLS encryption is paramount for secure communication, ensuring that all data exchanged between the customer and the cafeteria system remains encrypted and safeguarded from potential security breaches.
+* **Database Management:**
+    * **MySQL/PostgreSQL:** We utilize a robust relational database management system (RDBMS) to securely store and manage critical data, including user profiles, comprehensive transaction history, and detailed inventory data, ensuring data integrity and efficient retrieval.
+      
+
 ## Team Members
 
 * **Dissanayake P.D.**
@@ -100,18 +114,7 @@ Get a glimpse of the mobile application's user interface.
 * **Dr. Isuru Nawinne**
     * Email: isurunawinne@eng.pdn.ac.lk
 
-## Technologies Utilized
 
-Our Smart Canteen Management System is built upon a robust stack of modern technologies:
-
-* **Web Technologies:**
-    * **HTML, CSS, JavaScript, PHP:** These core web technologies form the backbone of our responsive and interactive user interfaces for both customers and cafeteria management, ensuring a seamless and intuitive experience across various devices.
-* **Embedded Systems:**
-    * **Raspberry Pi, IoT:** These embedded systems are crucial for controlling physical devices within the canteen environment. This includes capabilities for precise stock counting, managing smart dispensers, and enabling sensor-based inventory tracking, bringing real-world automation to the system.
-* **Network Security:**
-    * **SSL/TLS Encryption:** Implementing SSL/TLS encryption is paramount for secure communication, ensuring that all data exchanged between the customer and the cafeteria system remains encrypted and safeguarded from potential security breaches.
-* **Database Management:**
-    * **MySQL/PostgreSQL:** We utilize a robust relational database management system (RDBMS) to securely store and manage critical data, including user profiles, comprehensive transaction history, and detailed inventory data, ensuring data integrity and efficient retrieval.
 
 ## Project Links
 
