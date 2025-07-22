@@ -15,8 +15,8 @@ import ssl # Import the ssl module
 os.system("fuser -k 5000/tcp")
 
 # Configuration
-ESP32_IP = "http://192.168.1.105"
-SPRING_BOOT_URL = "http://192.168.1.102:8081"
+ESP32_IP = "your_esp32_ip_here"  # Replace with your actual ESP32 IP
+SPRING_BOOT_URL = "your_spring_boot_url_here"  # Replace with your actual
 ESP32_CAPTURE_ENDPOINT = f"{ESP32_IP}/capture"
 UPDATE_DATA_URL = f"{SPRING_BOOT_URL}/api/merchant/update-biometrics-data"
 

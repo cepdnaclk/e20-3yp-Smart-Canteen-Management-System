@@ -29,7 +29,7 @@ COMMAND_CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 STATUS_CHARACTERISTIC_UUID = "c5c9c331-914b-4688-b7f5-ea07361b26a9"
 
 # ======================= Backend Configuration =======================
-SPRING_BOOT_URL = "http://192.168.8.183:8081"
+SPRING_BOOT_URL = "your_spring_boot_url_here"
 BACKEND_PAYMENT_FINALIZE_URL = f"{SPRING_BOOT_URL}/api/payment/finalize"
 BACKEND_LOGIN_URL = f"{SPRING_BOOT_URL}/api/auth/login"
 
